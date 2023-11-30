@@ -18,12 +18,22 @@ public class Borrow {
         super();
     }
 
-    public Borrow(int bookId, String clientName, String bookName, int days, String borrowDate) {
+    public Borrow(int borrowId, int bookId, String clientName, String bookName, int days, String borrowDate) {
+        super();
+        this.borrowId = borrowId;
         this.bookId = bookId;
         this.clientName = clientName;
         this.bookName = bookName;
         this.days = days;
         this.borrowDate = borrowDate;
+    }
+
+    public int getBorrowId() {
+        return borrowId;
+    }
+
+    public void setBorrowId(int borrowId) {
+        this.borrowId = borrowId;
     }
 
     public int getBookId() {

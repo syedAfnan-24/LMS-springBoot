@@ -12,7 +12,7 @@ import java.util.List;
 public class BookController {
     @Autowired
     private BookService bookService;
-    @PostMapping("add") //adding a book
+    @PostMapping //adding a book
     public String enterBook(@RequestBody Book newBook){
         bookService.addBook(newBook);
         return "book added";

@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("books")
 public class BookController {
     @Autowired
     private BookService bookService;
     @PostMapping //adding a book
     public String enterBook(@RequestBody Book newBook){
+        System.out.println("executing");
         bookService.addBook(newBook);
         return "book added";
     }
@@ -28,6 +30,7 @@ public class BookController {
 
     @DeleteMapping("/{id}") //deleting a specific book
     public String deleteBook(@PathVariable int id){
+        System.out.println("executing delete");
         bookService.removeBook(id);
         return "book deleted";
     }

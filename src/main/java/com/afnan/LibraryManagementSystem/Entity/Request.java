@@ -12,15 +12,24 @@ public class Request {
     private String bookName;
     private String userName;
 
+    public Request(int requestId, int bookId, String bookName, String userName) {
+        super();
+        this.requestId = requestId;
+        this.bookId = bookId;
+        this.bookName = bookName;
+        this.userName = userName;
+    }
+
     public Request() {
         super();
     }
 
-    public Request(int bookId, String bookName, String userName) {
-        super();
-        this.bookId = bookId;
-        this.bookName = bookName;
-        this.userName = userName;
+    public int getRequestId() {
+        return requestId;
+    }
+
+    public void setRequestId(int requestId) {
+        this.requestId = requestId;
     }
 
     public int getBookId() {

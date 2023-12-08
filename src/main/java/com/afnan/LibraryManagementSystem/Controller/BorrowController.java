@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("borrow")
 public class BorrowController {
     @Autowired
@@ -18,7 +19,7 @@ public class BorrowController {
         borrowService.borrowBook(borrow);
         return "Book Borrowed";
     }
-    @GetMapping //check the list of books borrowed
+    @GetMapping //check the list of all books borrowed
     public List<Borrow> displayBorrows(){
         return borrowService.displayBorrowedBooks();
     }

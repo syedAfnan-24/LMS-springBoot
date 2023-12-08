@@ -8,12 +8,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("users")
 public class ClientController {
     @Autowired
     private ClientService clientService;
 
-    @PostMapping("add") //registering a user to data base
+    @PostMapping("signup") //registering a user to data base
     public String addUser(@RequestBody Client client){
         clientService.regUser(client);
         return "SignUp Successful";
@@ -27,8 +28,15 @@ public class ClientController {
         return clientService.findUser(usn);
     }
 
-    @PatchMapping("/{usn}") //updating password
+    @PatchMapping("{usn}") //updating password
     public String changePassword(@PathVariable String usn, @RequestBody String pass){
+        Client oldClient = clientService.findUser(usn);
+        oldClient.setPassword(pass);
+        clientService.regUser(oldClient);
+        return "password updated";
+    }
+    @PatchMapping("/patch/{usn}") //updating password
+    public String passwordChange(@RequestParam String usn, @RequestBody String pass){
         Client oldClient = clientService.findUser(usn);
         oldClient.setPassword(pass);
         clientService.regUser(oldClient);
